@@ -1,0 +1,83 @@
+% *** Standarddokument fьr LaTeX2e ***
+  \NeedsTeXFormat{LaTeX2e}
+  \documentclass[12pt]{article}
+  \usepackage{amssymb,amsmath}
+  %\usepackage{german}
+  %\usepackage[latin1]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage{a4}
+	\usepackage{multicol}
+	\usepackage{physics}
+  \usepackage{parskip}
+	\usepackage[english,russian]{babel}
+		\usepackage[left=1cm,right=1cm,
+    top=0.5cm,bottom=0.5cm,bindingoffset=0cm]{geometry}
+
+%\usefonttheme{professionalfonts}
+%\usepackage{concrete}
+%\usepackage{beton}
+  % --- Trennmuster fuer Ausnahmefaelle:
+  \hyphenation{Sy-stem bzw und Pha-sen-frequenz-gang Fre-quenz matlab}
+
+\def\CL{\mathcal{L}}
+\def\CA{\mathcal{A}}
+\def\CB{\mathcal{B}}
+\def\CP{\mathcal{P}}
+\def\CC{\mathcal{C}}
+\def\C{\mathbb{C}}
+\def\R{\mathbb{R}}
+\def\T{\mathbb{T}}
+\def\N{\mathbb {N}}
+\def\Z{\mathbb{Z}}
+\def\ds{\displaystyle}
+\def\ts{\textstyle}
+\def\ss{\scriptstyle}
+\def\supp{\mbox {supp}\,}
+
+\newcommand{\wf}{\widetilde{f}}
+\newcommand{\wphi}{\widetilde{\varphi}}
+\newcommand{\wpsi}{\widetilde{\psi}}
+\newcommand{\wchi}{\widetilde{\chi}}
+\newcommand{\id}{{\rm id}\,}
+\newcommand{\vphi}{\varphi}
+\newcommand{\la}{\lambda}
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\beno}{\begin{equation*}}
+\newcommand{\eeno}{\end{equation*}}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\fracts}[2]{\frac{\ts #1}{\ts #2}}
+
+%THEOREM LIKE ENVIROMENTS
+
+
+%\renewcommand{\baselinestretch}{1.5}
+\renewcommand{\labelenumi}{\rm(\roman{enumi})}
+%\renewcommand{\labelenumii}{\rm(\roman{enumii})}
+\renewcommand{\thefootnote}{*)}
+%\def\refname{References}
+\parindent1.5em % Absдtze  einrьcken
+\parskip0ex
+
+
+\begin{document}
+
+{\small
+\begin{multicols}{2}
+\input{sec1.tex}
+%\newpage
+\input{sec2.tex}
+%\newpage
+\input{sec3.tex}
+%\newpage
+\input{sec4.tex}
+%\newpage
+\input{sec5.tex}
+\input{sec6.tex}
+\end{multicols}
+}
+
+\end{document}
+
+
