@@ -1,6 +1,6 @@
-import os
 import sys
 import random
+import webbrowser
 
 
 def read_structure(filename='base.tex'):
@@ -9,14 +9,11 @@ def read_structure(filename='base.tex'):
     return base_structure
 
 
-def main(*args):
+def main(in_filename = 'files/base.tex', out_filename='files/output.tex', n_vars=3, *args):
     final_file = []
-    # print(f'Number of arguments: {len(sys.argv)}')
-    # for argument in sys.argv:
-    #     print(argument)
-    in_filename = sys.argv[1]
-    out_filename = sys.argv[2]
-    n_vars = int(sys.argv[3])
+    print(f'Number of arguments: {len(sys.argv)}')
+    for argument in sys.argv:
+        print(argument)
 
     # read doc structure
     with open(in_filename) as base_file:
@@ -52,6 +49,7 @@ def main(*args):
     with open(out_filename, 'w') as output_file:
         output_file.write(final_file)
 
+    webbrowser.open(out_filename)
 
 if __name__ == '__main__':
     main()
