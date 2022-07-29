@@ -6,4 +6,5 @@ Base structure file
 %%subtask_ph - placeholder for subtasks in the task. N-th occurrence corresponds to the n-th subtask.
 
 Problem file
-%%new_st - delimiter between batches of subtasks. Inside one batch subtask variants are divided by new line (\n).
+%%new_st - delimiter between batches of subtasks. (outdated) Inside one batch subtask variants are divided by new line (\n).
+%%st_del - delimiter betweeen subtasks inside one batch.

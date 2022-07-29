@@ -30,11 +30,12 @@ def main(in_filename = 'files/base.tex', out_filename='files/output.tex', n_vars
         with open(variants_filename) as input_file:
             task_variants[i] = input_file.read().split('%%new_st')
             for j, _ in enumerate(task_variants[i]):
-                task_variants[i][j] = task_variants[i][j].split('\n')
+                task_variants[i][j] = task_variants[i][j].split('%%st_del')
                 task_variants[i][j] = list(filter(None, task_variants[i][j]))
 
     # write variants to file
     final_file = file_start
+    tasks_numbers = [[[] for j in range(len(task_variants[i]))] for i in range(len(task_variants))]
     for i in range(n_vars):
         #create variant
         variant = variant_start
@@ -42,14 +43,18 @@ def main(in_filename = 'files/base.tex', out_filename='files/output.tex', n_vars
         for i, _ in enumerate(tasks):
             variant += tasks[i]
             for j, _ in enumerate(task_variants[i]):
-                variant = variant.replace('%%subtask_ph', random.choice(task_variants[i][j]), 1)
+                if tasks_numbers[i][j] == []:
+                    tasks_numbers[i][j] = [k for k in range(len(task_variants[i][j]))]
+                variant_choice_number = random.choice(tasks_numbers[i][j])
+                tasks_numbers[i][j].remove(variant_choice_number)
+                variant = variant.replace('%%subtask_ph', task_variants[i][j][variant_choice_number], 1)
         final_file += variant
     final_file += file_end
 
     with open(out_filename, 'w') as output_file:
         output_file.write(final_file)
 
-    webbrowser.open(out_filename)
+    # webbrowser.open(out_filename)
 
 if __name__ == '__main__':
     main()
