@@ -1,6 +1,5 @@
 import sys
 import random
-import webbrowser
 
 
 def read_structure(filename='base.tex'):
@@ -9,11 +8,13 @@ def read_structure(filename='base.tex'):
     return base_structure
 
 
-def main(in_filename = 'files/base.tex', out_filename='files/output.tex', n_vars=4, *args):
+def create_variants(base_path = 'files', n_vars=4, *args):
+    in_filename = f'{base_path}/base.tex'
+    out_filename = f'{base_path}/output.tex'
     final_file = []
-    print(f'Number of arguments: {len(sys.argv)}')
-    for argument in sys.argv:
-        print(argument)
+    # print(f'Number of arguments: {len(sys.argv)}')
+    # for argument in sys.argv:
+    #     print(argument)
 
     # read doc structure
     with open(in_filename) as base_file:
@@ -28,7 +29,7 @@ def main(in_filename = 'files/base.tex', out_filename='files/output.tex', n_vars
 
     # read task variants
     for i in range(len(tasks)):
-        variants_filename = f'files/Problem{i+1}.tex'
+        variants_filename = f'{base_path}/Problem{i+1}.tex'
         with open(variants_filename) as input_file:
             task_variants[i] = input_file.read().split('%%new_st')
             word_lists[i] = [[] for x in task_variants[i]]
@@ -64,10 +65,21 @@ def main(in_filename = 'files/base.tex', out_filename='files/output.tex', n_vars
         final_file += variant
     final_file += file_end
 
+    print(f"output file is {out_filename}")
     with open(out_filename, 'w') as output_file:
         output_file.write(final_file)
 
-    # webbrowser.open(out_filename)
+def main():
+
+    print("Set path to directory with Latex templates. Leave empty for default (./files):")
+    temp_path = input()
+    if temp_path == "":
+        temp_path = "files"
+    print(f"path to files is '{temp_path}'")
+
+    print("Set number of variants to create:")
+    number_of_variants = int(input())
+    create_variants(base_path=temp_path, n_vars=number_of_variants)
 
 if __name__ == '__main__':
     main()
